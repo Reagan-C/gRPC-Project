@@ -70,11 +70,13 @@ You can test the API using:
 
 ### Example HTTP Request
 
-  POST https://localhost:7000/v1/accounts/register
-  Content-Type: application/json
-  {
-  "email": "user@example.com",
-  "name": "John Doe",
-  "phoneNumber": "1234567890",
-  "password": "securePassword123/"
-  }
+ - POST https://localhost:7000/v1/accounts/register
+ - Content-Type: application/json
+ ```json
+{
+"email": "user@example.com",
+"name": "John Doe",
+"phoneNumber": "1234567890",
+"password": "securePassword123/"
+}
+```

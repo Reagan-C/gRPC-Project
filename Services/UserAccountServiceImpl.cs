@@ -91,7 +91,7 @@ namespace UserService.Services
                 throw new RpcException(new Status(StatusCode.NotFound, "username/password incorrect"));
 
             var token = await GenerateJwtToken(user);
-            return await Task.FromResult( new LoginResponse { Token = token, Username = user.UserName });
+            return await Task.FromResult(new LoginResponse { Token = token, Username = user.UserName });
         }
 
         [Authorize]
@@ -134,7 +134,7 @@ namespace UserService.Services
             await _userRepository.UpdateUserAsync(request, user);
 
             var updateUserResponse = _mapper.Map<UpdateUserResponse>(user);
-            
+
             return await Task.FromResult(updateUserResponse);
         }
 
@@ -153,7 +153,7 @@ namespace UserService.Services
             var result = await _userRepository.DeleteUserAsync(request);
             if (!result)
                 throw new RpcException(new Status(StatusCode.NotFound, "user profile not found"));
-           
+
             return new DeleteUserResponse { Response = "User deleted successfully" };
         }
 
@@ -180,7 +180,7 @@ namespace UserService.Services
             await _userManager.AddToRoleAsync(user, role);
 
 
-            return new AssignRoleResponse { Response = $"{user.Name} has been made an {role}"};
+            return new AssignRoleResponse { Response = $"{user.Name} has been made an {role}" };
         }
 
         [Authorize]
@@ -264,7 +264,7 @@ namespace UserService.Services
             };
 
             claims.AddRange(roles.Select(role => new Claim(ClaimTypes.Role, role)));
-         
+
 
             var tokenDescriptor = new SecurityTokenDescriptor
             {
